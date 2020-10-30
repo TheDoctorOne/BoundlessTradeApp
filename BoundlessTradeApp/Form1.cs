@@ -51,11 +51,11 @@ namespace BoundlessTradeApp
             }*/
         }
         private bool firstAdd = true;
-        private void invoke(float profit, String[] toAdd, String name)
+        private void invoke(float profit, String[] toAdd, String apiLink, String engName)
         {
             if (InvokeRequired)
             {
-                this.Invoke(new Action<float, string[], string>(invoke), new object[] { profit, toAdd, name });
+                this.Invoke(new Action<float, string[], string, string>(invoke), new object[] { profit, toAdd, apiLink, engName });
                 return;
             }
             if (!toAdd.Equals(""))
@@ -63,15 +63,20 @@ namespace BoundlessTradeApp
                 if(firstAdd)
                 {
                     firstAdd = false;
-                    dataGridView1.Rows[0].SetValues(name, profit, toAdd[0], toAdd[1]);
-                    label1.Text = "Fetching : " + name;
+                    dataGridView1.Rows[0].SetValues(apiLink, engName, profit, toAdd[0], toAdd[1]);
+                    label1.Text = "Fetching : " + engName;
                     return;
                 }
-                dataGridView1.Rows.Add(name, profit, toAdd[0], toAdd[1]);
+                dataGridView1.Rows.Add(apiLink, engName, profit, toAdd[0], toAdd[1]);
                 //itemListBox.Items.Add(toAdd);
+                label1.Text = "Fetching : " + engName;
+            }
+            else
+            {
+                label1.Text = "Done";
             }
             
-            label1.Text = name;
+            
             /*
             foreach (ArrayList tmp in itemList)
             {
@@ -223,11 +228,17 @@ namespace BoundlessTradeApp
                     String engName = "";
                     foreach(String[] s in itemEnglish)
                     {
-                        if(s[0].Contains(stringId))
+                        if(s[0].Equals(stringId))
                         {
                             engName = s[1];
                         }
                     }
+
+                    /*
+                     * Structure ~
+                     * [0] -> English Name [Not accura]
+                     * 
+                     * **/
 
                     add.Add(engName);
                     add.Add(tradeValues);
@@ -235,7 +246,7 @@ namespace BoundlessTradeApp
                     if ((float)tradeValues[1] > 0 && (float)tradeValues[1] != -1)
                         try
                         {
-                            invoke((float)tradeValues[1], (string[])tradeValues[0], apiLink);
+                            invoke((float)tradeValues[1], (string[])tradeValues[0], apiLink, engName);
                         }
                         catch(Exception)
                         {
@@ -254,7 +265,7 @@ namespace BoundlessTradeApp
             try
             {
                 String[] n = {"", ""};
-                invoke(0, n, "Done");
+                invoke(0, n, "Done", "Done");
             }
             catch (Exception)
             {

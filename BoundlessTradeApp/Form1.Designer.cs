@@ -39,6 +39,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.engName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PROFIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.theyBuy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.theySell = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -119,6 +120,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ITEM,
+            this.engName,
             this.PROFIT,
             this.theyBuy,
             this.theySell});
@@ -140,10 +142,16 @@
             // 
             // ITEM
             // 
-            this.ITEM.HeaderText = "ITEM";
+            this.ITEM.HeaderText = "ITEM ID";
             this.ITEM.Name = "ITEM";
             this.ITEM.ReadOnly = true;
             this.ITEM.Width = 200;
+            // 
+            // engName
+            // 
+            this.engName.HeaderText = "ITEM NAME";
+            this.engName.Name = "engName";
+            this.engName.ReadOnly = true;
             // 
             // PROFIT
             // 
@@ -171,7 +179,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1052, 763);
+            this.ClientSize = new System.Drawing.Size(1047, 758);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
@@ -203,6 +211,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewTextBoxColumn ITEM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn engName;
         private System.Windows.Forms.DataGridViewTextBoxColumn PROFIT;
         private System.Windows.Forms.DataGridViewTextBoxColumn theyBuy;
         private System.Windows.Forms.DataGridViewTextBoxColumn theySell;
